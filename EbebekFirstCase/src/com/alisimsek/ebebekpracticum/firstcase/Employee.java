@@ -1,14 +1,12 @@
 package com.alisimsek.ebebekpracticum.firstcase;
 
-import java.util.Scanner;
-
 public class Employee {
-    String name;
-    int salary;
-    int workHours;
-    int hireYear;
+    private String name;
+    private int salary;
+    private int workHours;
+    private int hireYear;
 
-    //1.metod
+    //1.metod - Kurucu metod
     public Employee(String name, int salary, int workHours, int hireYear) {
         this.name = name;
         this.salary = salary;
@@ -52,42 +50,8 @@ public class Employee {
         this.hireYear = hireYear;
     }
 
-    public static void main(String[] args) {
-        Employee emp = new Employee();
-        Scanner input = new Scanner(System.in);
-
-        System.out.print("Çalışan Ad ve Soyadını giriniz : ");
-        emp.setName(input.nextLine());
-
-        System.out.print("Maaş giriniz : ");
-        emp.setSalary(input.nextInt());
-
-        System.out.print("Haftalık çalışma saatini giriniz : ");
-        emp.setWorkHours(input.nextInt());
-
-        System.out.print("İşe giriş yılını giriniz : ");
-        emp.setHireYear(input.nextInt());
-
-        System.out.println(emp);
-        /*
-        double tax = emp.tax(emp.getSalary());
-        int bonus = emp.bonus(emp.getWorkHours());
-        double raiseSalary = emp.raiseSalary(emp.getHireYear(), emp.getSalary(), emp.getWorkHours());
-        double totalSalary = emp.getSalary() + bonus;
-        double salaryWithTaxAndSalary = emp.getSalary() + bonus - tax;
-
-        //System.out.println("tax : " + tax);
-        //System.out.println("bonus : " + bonus);
-        //System.out.println("raiseSalary : " + raiseSalary);
-        //System.out.println("Total salary : " + totalSalary);
-        //System.out.println("Salary with tax and bonus : " + salaryWithTaxAndSalary);
-
-         */
-    }
-
-
-    //2.metod
-    private double tax(int salary){
+    //2.metod - tax() fonksiyonu ile sadece salary’i uygulanan vergi hesaplanacak
+    public double tax(int salary){
         if (salary >= 1000){
             return ((salary*3)/100);
         }
@@ -95,25 +59,25 @@ public class Employee {
     }
 
     //3.metod
-    private int bonus(int workHours){
+    public int bonus(int workHours){
         if (workHours >=40){
-            return (workHours-40)*30*4;
+            return (workHours-40)*30;
         }
         return 0;
     }
 
-    //4.metod
-    private double raiseSalary(int hireYear, int salary, int workHours){
+    //4.metod - raiseSalary() hesaplarken vergi ve bonusları dikkate almalısınız.
+    public double raiseSalary(int hireYear, int salary, int workHours){
         double raiseSalary = 0;
         int currentYear = 2021;
         if ((currentYear-hireYear) <10){
-            raiseSalary = ((salary + bonus(workHours) - tax(salary))*0.05);
+            raiseSalary = ( (salary + bonus(workHours) - tax(salary) )*0.05);
         }
         else if ( 9<(currentYear-hireYear) && (currentYear-hireYear)<20 ){
-            raiseSalary = ((salary + bonus(workHours) - tax(salary))*0.1);
+            raiseSalary = ( (salary + bonus(workHours) - tax(salary) )*0.1);
         }
         else if ((currentYear-hireYear)>19){
-            raiseSalary = ((salary + bonus(workHours) - tax(salary))*0.15);
+            raiseSalary = ( (salary + bonus(workHours) - tax(salary) )*0.15);
         }
         return raiseSalary;
     }
@@ -121,16 +85,17 @@ public class Employee {
     //5.metod
     @Override
     public String toString() {
+        double vergi_ve_bonus_ile_maas = this.salary + bonus(this.workHours) - tax(this.salary);
         return  "\n"+
-                "Name= " + getName() + "\n"+
-                "Salary= " + getSalary() + "\n" +
-                "WorkHours= " + getWorkHours() + "\n" +
-                "HireYear= " + getHireYear() + "\n" +
-                "Tax= " + tax(getSalary()) + "\n" +
-                "Bonus= " + bonus(getWorkHours()) + "\n" +
-                "RaiseSalary= " + raiseSalary(getHireYear(), getSalary(), getWorkHours()) + "\n" +
-                "salaryWithTaxAndSalary= " + (getSalary() + bonus(getWorkHours()) - tax(getSalary())) + "\n" +
-                "totalSalary= " + (getSalary() + bonus(getWorkHours()));
+                "Adı : " + this.name + "\n"+
+                "Maaşı : " + this.salary + "\n" +
+                "Çalışma Saati : " + this.workHours + "\n" +
+                "Başlangıç Yılı : " + this.hireYear + "\n" +
+                "Vergi : " + tax(this.salary) + "\n" +
+                "Bonus : " + bonus(this.workHours) + "\n" +
+                "Maaş Artışı : " + raiseSalary(this.hireYear, this.salary, this.workHours) + "\n" +
+                "Vergi ve Bonuslar ile birlikte maaş : " + (vergi_ve_bonus_ile_maas) + "\n" +
+                "Toplam Maaş : " + (vergi_ve_bonus_ile_maas + raiseSalary(this.hireYear, this.salary, this.workHours) );
     }
 
 
