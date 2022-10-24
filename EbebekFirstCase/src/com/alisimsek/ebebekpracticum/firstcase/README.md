@@ -1,11 +1,11 @@
 
-#Case Catalog
+# Case Catalog
 
 Course Name : ebebek Java&QA Practicum  
 Type : First Case  
 Language : Java
 
-##Case Detail
+## Case Detail
 Java'da "Employee" adında fabrika çalışanlarını temsil 
 eden ve metotları ile çalışanların maaşlarını hesaplayan 
 bir sınıf yazmalısınız. Bu sınıf 4 nitelik ve 5 metoda 
@@ -14,13 +14,13 @@ maaşı, çalışma saati, başlangıç yılı, vergi, bonus,
 maaş artışı, vergi ve bonuslarla birlikte maaş, toplam 
 maaş değerlerini konsola yazdırmanızı bekliyoruz.  
 
-###Sınıfın Nitelikleri
+### Sınıfın Nitelikleri
 name : Çalışanın adı ve soyadı  
 salary : Çalışanın maaşı  
 workHours : Haftalık çalışma saati  
 hireYear : İşe başlangıç yılı  
 
-###Sınıfın Metotları
+### Sınıfın Metotları
 - Employee(name,salary,workHours,hireYear) : Kurucu metot olup 4 parametre alacaktır.  
 - tax() : Maaşa uygulanan vergiyi hesaplayacaktır.  
 Çalışanın maaşı 1000 TL'den az ise vergi uygulanmayacaktır.  
@@ -32,7 +32,7 @@ Eğer çalışan 9 yıldan fazla ve 20 yıldan az çalışıyorsa maaşına %10 
 Eğer çalışan 19 yıldan fazla çalışıyorsa %15 zam yapılacaktır.
 - toString() : Çalışana ait bilgileri ekrana bastıracaktır.
 
-###Örnek konsol çıktısı:
+### Örnek konsol çıktısı:
 Adı : kemal  
 Maaşı : 2000.0  
 Çalışma Saati : 45  
@@ -44,10 +44,8 @@ Vergi ve Bonuslar ile birlikte maaş : 2090.0
 Toplam Maaş : 2390.0
 
 
-###Notlar
+### Notlar
 raiseSalary() hesaplarken vergi ve bonusları dikkate almalısınız.  
 tax() fonksiyonu ile sadece salary’i uygulanan vergi hesaplanacak  
 Toplam maaş: çalışanın kendi maaşı +artış+ bonus  
 Vergi ve bonuslarla birlikte maaş için: vergi, bonus ve çalışanın kendi maaşı ile bulunacak.
-
-
